@@ -26,7 +26,7 @@ var (
 )
 
 var rootCmd = &cobra.Command{
-	Use: "testcli",
+	Use: "jumpdir",
 }
 
 var localCmd = &cobra.Command{
