@@ -1,2 +1,3 @@
-# gh-template-go-cli
+# go-cli-jumpdir
+Easy jumping to previously visited dirs
 
