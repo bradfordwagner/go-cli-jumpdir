@@ -1,7 +1,7 @@
 package main
 
 import (
-	command_add "github.com/bradfordwagner/go-cli-jumpdir/internal/cmd/add"
+	command_jump "github.com/bradfordwagner/go-cli-jumpdir/internal/cmd/jump"
 	command_list "github.com/bradfordwagner/go-cli-jumpdir/internal/cmd/list"
 	"github.com/spf13/cobra"
 )
@@ -18,6 +18,6 @@ var jumpCmd = &cobra.Command{
 		return res, cobra.ShellCompDirectiveDefault
 	},
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
-		return command_add.New().AddDirectories(args)
+		return command_jump.New().Jump(args[0])
 	},
 }

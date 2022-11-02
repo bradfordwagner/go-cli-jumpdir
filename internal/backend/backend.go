@@ -2,6 +2,7 @@ package backend
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"sort"
@@ -101,4 +102,14 @@ func (b *Backend) List() (res []string) {
 		res = append(res, directory.Path)
 	}
 	return
+}
+
+func (b *Backend) AddWeight(directory string, weight int) (err error) {
+	for i, d := range b.Directories {
+		if d.Path == directory {
+			b.Directories[i].Weight = b.Directories[i].Weight + weight
+			return
+		}
+	}
+	return errors.New(fmt.Sprintf("could not find directory %s", directory))
 }
