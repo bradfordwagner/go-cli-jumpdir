@@ -20,6 +20,7 @@ func (a *ListCommand) List() (res []string) {
 	return a.backend.List()
 }
 
+// ListToStdOut - used for fzf in our hack script
 func (a *ListCommand) ListToStdOut() {
 	dirs := a.backend.List()
 	res := strings.Join(dirs, "\n")
