@@ -15,7 +15,7 @@ var jumpCmd = &cobra.Command{
 	Short: "jumps to dir",
 	ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 		res := command_list.New().List()
-		return res, cobra.ShellCompDirectiveFilterDirs
+		return res, cobra.ShellCompDirectiveDefault
 	},
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		return command_add.New().AddDirectories(args)
