@@ -12,7 +12,7 @@ func init() {
 var addCmd = &cobra.Command{
 	Use:   "add",
 	Short: "adds a dir to the jumpdir backend",
-	Run: func(cmd *cobra.Command, args []string) {
-		command_add.New().Run()
+	RunE: func(cmd *cobra.Command, args []string) (err error) {
+		return command_add.New().AddDirectories(args)
 	},
 }
