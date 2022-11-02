@@ -75,6 +75,19 @@ func (b *Backend) Save() (err error) {
 	return
 }
 
+func (b *Backend) Delete(directories []string) {
+	for _, directory := range directories {
+		for i, d := range b.Directories {
+			if directory == d.Path {
+				// move to end and reslice
+				b.Directories[i] = b.Directories[len(b.Directories)-1]
+				b.Directories = b.Directories[:len(b.Directories)-1]
+			}
+		}
+	}
+	b.Sort()
+}
+
 func dbPath() string {
 	dirname, err := os.UserHomeDir()
 	if err != nil {
