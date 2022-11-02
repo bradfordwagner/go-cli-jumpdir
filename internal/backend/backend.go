@@ -95,3 +95,10 @@ func dbPath() string {
 	}
 	return fmt.Sprintf("%s/%s", dirname, dbfile)
 }
+
+func (b *Backend) List() (res []string) {
+	for _, directory := range b.Directories {
+		res = append(res, directory.Path)
+	}
+	return
+}
