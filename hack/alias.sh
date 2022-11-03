@@ -21,3 +21,16 @@ jdt() {
 jda() {
   jumpdir add $(pwd -P)
 }
+
+# list options
+jdl() {
+  jumpdir list
+}
+
+# delete helper
+jdd() {
+  dir=$(jumpdir list | fzf)
+  if [ $dir != "" ]; then
+    jumpdir delete ${dir}
+  fi
+}
