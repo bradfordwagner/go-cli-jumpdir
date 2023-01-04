@@ -34,3 +34,10 @@ jdd() {
     jumpdir delete ${dir}
   fi
 }
+
+# jumpdir vim
+jdv() {
+  jd
+  vim .
+}
+
