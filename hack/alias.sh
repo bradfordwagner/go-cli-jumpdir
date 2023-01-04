@@ -38,6 +38,6 @@ jdd() {
 # jumpdir vim
 jdv() {
   jd
-  vim .
+  ${EDITOR} .
 }
 
