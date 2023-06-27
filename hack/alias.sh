@@ -38,6 +38,6 @@ jdd() {
 # jumpdir vim
 jdv() {
   jd
-  ${EDITOR} .
+  # if jump_dir_editor_cmd is empty default it to EDITOR then to vim
+  eval ${jump_dir_editor_cmd:-${EDITOR:-vim}}
 }
-
