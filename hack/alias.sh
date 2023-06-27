@@ -43,5 +43,5 @@ jdv() {
 }
 # jumpdir tmux vim
 jdtv() {
-  jdt && tmux send 'eval ${jump_dir_editor_cmd:-${EDITOR:-vim}}'
+  jdt && tmux send 'eval ${jump_dir_editor_cmd:-${EDITOR:-vim}}' Enter
 }
