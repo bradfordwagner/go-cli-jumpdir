@@ -41,3 +41,7 @@ jdv() {
   # if jump_dir_editor_cmd is empty default it to EDITOR then to vim
   eval ${jump_dir_editor_cmd:-${EDITOR:-vim}}
 }
+# jumpdir tmux vim
+jdtv() {
+  jdt && tmux send 'eval ${jump_dir_editor_cmd:-${EDITOR:-vim}}'
+}
