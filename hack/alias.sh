@@ -4,6 +4,9 @@ jd() {
   if [ $dir != "" ]; then
     jumpdir addweight ${dir}
     cd ${dir}
+  else
+    # ensure exit code is returned to prevent follow up calls
+    return 1
   fi
 }
 
@@ -14,6 +17,9 @@ jdt() {
     jumpdir addweight ${dir}
     dir_name=$(basename ${dir})
     tmux new-window -n ${dir_name} -c "${dir}"
+  else
+    # ensure exit code is returned to prevent follow up calls
+    return 1
   fi
 }
 
@@ -37,7 +43,9 @@ jdd() {
 
 # jumpdir vim
 jdv() {
-  jd
-  ${EDITOR} .
+  jd && eval ${jump_dir_editor_cmd:-${editor:-vim}}
 }
-
+# jumpdir tmux vim
+jdtv() {
+  jdt && tmux send 'eval ${jump_dir_editor_cmd:-${EDITOR:-vim}}' Enter
+}
