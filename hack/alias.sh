@@ -3,7 +3,7 @@ jd() {
   dir=$(jumpdir list | fzf)
   if [ $dir != "" ]; then
     jumpdir addweight ${dir}
-    cd ${dir}
+    cd $(echo ${dir} | sed "s|^~|${HOME}|")
   else
     # ensure exit code is returned to prevent follow up calls
     return 1
@@ -25,7 +25,7 @@ jdt() {
 
 # jump directory add
 jda() {
-  jumpdir add $(pwd -P)
+  jumpdir add $(pwd -P | sed "s|^${HOME}|~|")
 }
 
 # list options
