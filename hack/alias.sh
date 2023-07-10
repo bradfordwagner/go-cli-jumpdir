@@ -12,7 +12,7 @@ jd() {
 
 # short for jd tmux
 jdt() {
-  dir=$(jumpdir list | fzf)
+  dir=$(jumpdir list | fzf | sed "s|^~|${HOME}|")
   if [ $dir != "" ]; then
     jumpdir addweight ${dir}
     dir_name=$(basename ${dir})
