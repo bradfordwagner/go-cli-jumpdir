@@ -12,11 +12,11 @@ jd() {
 
 # short for jd tmux
 jdt() {
-  dir=$(jumpdir list | fzf | sed "s|^~|${HOME}|")
+  dir=$(jumpdir list | fzf)
   if [ $dir != "" ]; then
     jumpdir addweight ${dir}
     dir_name=$(basename ${dir})
-    tmux new-window -n ${dir_name} -c "${dir}"
+    tmux new-window -n ${dir_name} -c "$(echo ${dir} | sed "s|^~|${HOME}|")"
   else
     # ensure exit code is returned to prevent follow up calls
     return 1
