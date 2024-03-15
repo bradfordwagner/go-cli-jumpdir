@@ -1,6 +1,7 @@
 builds:
   - main: ./cmd/jumpdir
     id: jumpdir
+    binary: jumpdir
     goos:
       - linux
       - windows
