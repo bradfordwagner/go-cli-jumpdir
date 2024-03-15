@@ -1,8 +1,6 @@
 builds:
   - main: ./cmd/jumpdir
     id: jumpdir
-    env:
-      - CGO_ENABLED=0
     goos:
       - linux
       - windows
