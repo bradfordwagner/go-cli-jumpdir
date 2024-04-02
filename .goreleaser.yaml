@@ -1,6 +1,8 @@
 builds:
   - id: cli
     main: ./cmd/jumpdir
+    env:
+      - CGO_ENABLED=0
     binary: jumpdir
     goos:
       - linux
