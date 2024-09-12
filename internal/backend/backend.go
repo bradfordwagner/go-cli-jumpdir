@@ -98,6 +98,9 @@ func dbPath() string {
 }
 
 func (b *Backend) List() (res []string) {
+	sort.Slice(b.Directories, func(i, j int) bool {
+		return b.Directories[i].Weight > b.Directories[j].Weight
+	})
 	for _, directory := range b.Directories {
 		res = append(res, directory.Path)
 	}
