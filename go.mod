@@ -1,6 +1,6 @@
 module github.com/bradfordwagner/go-cli-jumpdir
 
-go 1.25
+go 1.26.4
 
 require (
 	github.com/sirupsen/logrus v1.9.4
