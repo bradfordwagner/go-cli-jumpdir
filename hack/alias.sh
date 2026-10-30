@@ -1,9 +1,9 @@
 # jump directory
 jd() {
   dir=$(jumpdir list | fzf)
-  if [ $dir != "" ]; then
-    jumpdir addweight ${dir}
-    cd $(echo ${dir} | sed "s|^~|${HOME}|")
+  if [ -n "${dir}" ]; then
+    jumpdir addweight "${dir}"
+    cd "$(echo "${dir}" | sed "s|^~|${HOME}|")"
   else
     # ensure exit code is returned to prevent follow up calls
     return 1
@@ -13,10 +13,10 @@ jd() {
 # short for jd tmux
 jdt() {
   dir=$(jumpdir list | fzf)
-  if [ $dir != "" ]; then
-    jumpdir addweight ${dir}
-    dir_name=$(basename ${dir})
-    tmux new-window -n ${dir_name} -c "$(echo ${dir} | sed "s|^~|${HOME}|")"
+  if [ -n "${dir}" ]; then
+    jumpdir addweight "${dir}"
+    dir_name=$(basename "${dir}")
+    tmux new-window -n "${dir_name}" -c "$(echo "${dir}" | sed "s|^~|${HOME}|")"
   else
     # ensure exit code is returned to prevent follow up calls
     return 1
@@ -25,7 +25,7 @@ jdt() {
 
 # jump directory add
 jda() {
-  jumpdir add $(pwd -P | sed "s|^${HOME}|~|")
+  jumpdir add "$(pwd -P | sed "s|^${HOME}|~|")"
 }
 
 # list options
@@ -36,8 +36,8 @@ jdl() {
 # delete helper
 jdd() {
   dir=$(jumpdir list | fzf)
-  if [ $dir != "" ]; then
-    jumpdir delete ${dir}
+  if [ -n "${dir}" ]; then
+    jumpdir delete "${dir}"
   fi
 }
 
